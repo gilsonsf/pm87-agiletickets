@@ -33,6 +33,8 @@ public class Sessao {
 	private Integer ingressosReservados = 0;
 
 	private BigDecimal preco;
+	
+	private Periodicidade periodicidade;
 
 	public Long getId() {
 		return id;
@@ -109,6 +111,14 @@ public class Sessao {
 
 	public BigDecimal getPreco() {
 		return preco;
+	}
+
+	public Periodicidade getPeriodicidade() {
+		return periodicidade;
+	}
+
+	public void setPeriodicidade(Periodicidade periodicidade) {
+		this.periodicidade = periodicidade;
 	}
 	
 }
