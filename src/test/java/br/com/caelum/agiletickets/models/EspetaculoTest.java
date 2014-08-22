@@ -104,7 +104,7 @@ public class EspetaculoTest {
 	public void deveCriarEspetaculoComDatasDiferentes() {
 		Espetaculo espetaculo = new Espetaculo();
 		LocalDate inicio = new LocalDate(2014, 8, 14);
-		LocalDate fim = new LocalDate(2014, 8, 16);
+		LocalDate fim = new LocalDate(2014, 8, 15);
 		LocalTime horario = new LocalTime(20, 0);
 		
 		espetaculo.criaSessoes(inicio, fim , horario, Periodicidade.DIARIA);
