@@ -3,6 +3,8 @@ package br.com.caelum.agiletickets.models;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.junit.Test;
 
 public class EspetaculoTest {
@@ -72,7 +74,45 @@ public class EspetaculoTest {
 
 		assertFalse(ivete.Vagas(5, 3));
 	}
+	
+	@Test
+	public void deveCriarEspetaculoComUmaSessao() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2014, 8, 14);
+		LocalDate fim = new LocalDate(2014, 8, 14);
+		LocalTime horario = new LocalTime(20, 0);
+		
+		espetaculo.criaSessoes(inicio, fim , horario, Periodicidade.DIARIA);
 
+		assertTrue(espetaculo.getSessoes().size() == 1);
+		assertTrue(espetaculo.getSessoes().get(0).getInicio().equals(inicio.toDateTime(horario)));
+	}
+	
+	@Test
+	public void deveCriarEspetaculoComDuasSessao() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2014, 8, 14);
+		LocalDate fim = new LocalDate(2014, 8, 15);
+		LocalTime horario = new LocalTime(20, 0);
+		
+		espetaculo.criaSessoes(inicio, fim , horario, Periodicidade.DIARIA);
+
+		assertTrue(espetaculo.getSessoes().size() == 2);
+	}
+	
+	@Test
+	public void deveCriarEspetaculoComDatasDiferentes() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2014, 8, 14);
+		LocalDate fim = new LocalDate(2014, 8, 16);
+		LocalTime horario = new LocalTime(20, 0);
+		
+		espetaculo.criaSessoes(inicio, fim , horario, Periodicidade.DIARIA);
+		
+		assertTrue(espetaculo.getSessoes().get(0).getInicio().equals(inicio.toDateTime(horario)));
+		assertTrue(espetaculo.getSessoes().get(1).getInicio().equals(fim.toDateTime(horario)));
+	}
+	
 	private Sessao sessaoComIngressosSobrando(int quantidade) {
 		Sessao sessao = new Sessao();
 		sessao.setTotalIngressos(quantidade * 2);
@@ -80,5 +120,7 @@ public class EspetaculoTest {
 
 		return sessao;
 	}
+	
+
 	
 }
