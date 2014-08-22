@@ -113,6 +113,13 @@ public class EspetaculoTest {
 		assertTrue(espetaculo.getSessoes().get(1).getInicio().equals(fim.toDateTime(horario)));
 	}
 	
+	@Test
+	public void deveVerificarSeOFelipeMama() {
+		assertTrue("Felipe mama?", true);
+	}
+	
+	
+	
 	private Sessao sessaoComIngressosSobrando(int quantidade) {
 		Sessao sessao = new Sessao();
 		sessao.setTotalIngressos(quantidade * 2);
